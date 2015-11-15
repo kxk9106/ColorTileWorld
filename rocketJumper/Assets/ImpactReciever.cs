@@ -11,7 +11,7 @@ public class ImpactReciever : MonoBehaviour {
 	void Start () {
 
         character = GetComponent<CharacterController>();
-
+        //character = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<CharacterController>();
 	}
 
     void AddImpact(Vector3 force)
