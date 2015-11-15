@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour {
-	Vector3 restartLoc;
+public class checkPoints : MonoBehaviour {
 
+	Vector3 restartLoc;
+	
 	// Use this for initialization
 	void Start () {
 		restartLoc = this.transform.position;
@@ -16,7 +17,7 @@ public class NewBehaviourScript : MonoBehaviour {
 		}
 		
 	}
-
+	
 	void OnCollisionEnter(Collision other){
 		//if ball goes over tile -> changes color
 		if(other.gameObject.tag=="checkPoint"){
