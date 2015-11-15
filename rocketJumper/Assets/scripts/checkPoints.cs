@@ -14,14 +14,19 @@ public class checkPoints : MonoBehaviour {
 	void Update () {
 		if (this.transform.position.y <= -1.5f) {
 			this.transform.position = restartLoc;
+			Debug.Log("triggered");
 		}
 		
 	}
 	
 	void OnCollisionEnter(Collision other){
 		//if ball goes over tile -> changes color
-		if(other.gameObject.tag=="checkPoint"){
+		if (other.gameObject.tag == "checkPoint") {
 			restartLoc = other.gameObject.transform.position;
+			Debug.Log ("hit");
 		}//if
+
+		Debug.Log ("elsE");
+		
 	}
 }
