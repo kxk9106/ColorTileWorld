@@ -2,12 +2,15 @@
 using System.Collections;
 
 public class checkPoints : MonoBehaviour {
+	public Texture notActiveTexture;
+	public Texture activeTexture;
 
 	Vector3 restartLoc;
-	
+	GameObject[] checkPointFlags;
 	// Use this for initialization
 	void Start () {
 		restartLoc = this.transform.position;
+		checkPointFlags = GameObject.FindGameObjectsWithTag ("checkPoint");
 	}
 	
 	// Update is called once per frame
@@ -16,17 +19,21 @@ public class checkPoints : MonoBehaviour {
 			this.transform.position = restartLoc;
 			Debug.Log("triggered");
 		}
-		
-	}
-	
-	void OnCollisionEnter(Collision other){
-		//if ball goes over tile -> changes color
-		if (other.gameObject.tag == "checkPoint") {
-			restartLoc = other.gameObject.transform.position;
-			Debug.Log ("hit");
-		}//if
 
-		Debug.Log ("elsE");
+		for(int i = 0; i< checkPointFlags.Length; i++){
+			float distance = Vector3.Distance(this.transform.position,checkPointFlags[i].transform.position);
+			if(restartLoc != checkPointFlags[i].transform.position){
+				if(distance < 3.0f){
+					restartLoc = checkPointFlags[i].transform.position; 
+					checkPointFlags[i].GetComponent<Renderer>().material.mainTexture = activeTexture;
+					Debug.Log("checkPoint");
+				}
+				else{
+					checkPointFlags[i].GetComponent<Renderer>().material.mainTexture = notActiveTexture;
+				}
+			}
+		}
 		
 	}
+
 }
