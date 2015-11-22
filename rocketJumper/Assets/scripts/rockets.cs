@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class rockets : MonoBehaviour {
 
@@ -13,6 +14,9 @@ public class rockets : MonoBehaviour {
 	public Button vin;
 	public bool rocketTrue;
 	public bool vineTrue;
+	GameObject[] blocks;
+
+
 
 
     // Use this for initialization
@@ -22,6 +26,8 @@ public class rockets : MonoBehaviour {
 		vin.GetComponent<Image> ().color = Color.white;
 		rocketTrue = true;
 		vineTrue = false;
+		blocks = GameObject.FindGameObjectsWithTag ("block");
+
     }
 
     // Update is called once per frame
@@ -35,6 +41,10 @@ public class rockets : MonoBehaviour {
 			rock.GetComponent<Image>().color = Color.red;
 			rocketTrue = true;
 			vineTrue = false;
+			foreach (GameObject blo in blocks)
+			{
+				blo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+			}
 
 		}
         if (Input.GetKeyDown (KeyCode.Alpha2)) 
@@ -43,6 +53,10 @@ public class rockets : MonoBehaviour {
 			vin.GetComponent<Image>().color = Color.red;
 			rocketTrue = false;
 			vineTrue = true;
+			foreach (GameObject blo in blocks)
+			{
+				blo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+			}
 		}
 		if (Input.GetButtonDown("Fire1"))
 		{

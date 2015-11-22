@@ -33,6 +33,8 @@ public class Explode : MonoBehaviour {
 			if(other.gameObject.tag == "block")
 			{
 				other.gameObject.GetComponent<Renderer>().material.color = Color.green;
+				Destroy(gameObject); // destroys the projectile after impact
+
 			}
 		} 
 		else 
