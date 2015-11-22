@@ -11,6 +11,8 @@ public class rockets : MonoBehaviour {
     public int power = 50;
 	public Button rock;
 	public Button vin;
+	public bool rocketTrue;
+	public bool vineTrue;
 
 
     // Use this for initialization
@@ -18,21 +20,29 @@ public class rockets : MonoBehaviour {
     {
 		rock.GetComponent<Image> ().color = Color.red;
 		vin.GetComponent<Image> ().color = Color.white;
+		rocketTrue = true;
+		vineTrue = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+		//if button chosen changes color to red
+		//if not chosen changes color to white
 		if (Input.GetKeyDown (KeyCode.Alpha1)) 
 		{
 			vin.GetComponent<Image>().color = Color.white;
 			rock.GetComponent<Image>().color = Color.red;
+			rocketTrue = true;
+			vineTrue = false;
 
 		}
         if (Input.GetKeyDown (KeyCode.Alpha2)) 
 		{
 			rock.GetComponent<Image>().color = Color.white;
 			vin.GetComponent<Image>().color = Color.red;
+			rocketTrue = false;
+			vineTrue = true;
 		}
 		if (Input.GetButtonDown("Fire1"))
 		{
