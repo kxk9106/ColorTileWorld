@@ -8,7 +8,7 @@ public class rockets : MonoBehaviour {
     // Variable Declaration
     public Rigidbody Projectile = null;
     public Transform Launcher = null;
-    private const int SPAWN_DISTANCE = 1;
+    private const float SPAWN_DISTANCE = .5f;
     public int power = 50;
 	public Button rock;
 	public Button vin;
