@@ -10,6 +10,9 @@ public class Explode : MonoBehaviour {
     public float upMod = 0; // for AddExplosionForce - upwardsModifier - leaving this at zero, so that the explosion force will be easier to control and utilize
     public ForceMode fMode = ForceMode.Impulse; // for AddExplosionForce - ForceMode - 4 options: Force, Acceleration, Impulse and VelocityChange, no idea which is best
 
+    Vector3 TossDirection;
+    public float speed = 10;
+
 	GameObject thing;
 	public rockets rocketa;
     
@@ -48,7 +51,15 @@ public class Explode : MonoBehaviour {
 				{
 					rb.AddExplosionForce(force, pos, radius, upMod, fMode);
 				}//if
-				
+				else if (hit.transform.gameObject.tag == "Player")
+                {
+                    TossDirection = hit.transform.position - pos;
+                    //hit.transform.gameObject.GetComponent<CharacterController>().Move(TossDirection * speed); //error - script is trying to access character controller of capsule which doesn't exist
+                    //hit.gameObject.GetComponent<CharacterController>().Move(TossDirection * speed); //error - script is trying to access character controller of capsule which doesn't exist
+                    //hit.transform.parent.gameObject.GetComponent<CharacterController>().Move(TossDirection * speed); //error - no character controller attached to firstpersoncontroller. We have to go deeper.
+                    hit.transform.parent.parent.gameObject.GetComponent<CharacterController>().Move(TossDirection * speed); //holy shit it actually works
+                    //hit.transform.parent.transform.parent.gameObject.GetComponent<CharacterController>().Move(TossDirection * speed);
+                }
 			}//foreach
 			
 			Destroy(gameObject); // destroys the projectile after impact
