@@ -13,7 +13,8 @@ public class actions : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		con = GameObject.Find ("FPSController");
-		charControl = con.GetComponent<CharacterController> ();
+		//charControl = con.GetComponent<CharacterController> ();
+        charControl = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<CharacterController>();
 	}
 	
 	// Update is called once per frame
