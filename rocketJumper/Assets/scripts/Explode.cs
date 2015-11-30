@@ -65,5 +65,7 @@ public class Explode : MonoBehaviour {
 			
 			Destroy(gameObject); // destroys the projectile after impact
 		}
+		Destroy(gameObject); // destroys the projectile after impact
+
     }
 }

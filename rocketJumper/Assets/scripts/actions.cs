@@ -25,7 +25,7 @@ public class actions : MonoBehaviour {
 	void OnCollisionEnter(Collision other){
 		if (gameObject.GetComponent<Renderer>().material.color == Color.green) {
 			Debug.Log("Greenss");
-			if(charControl.isGrounded){
+			/*if(charControl.isGrounded){
 				Debug.Log("YOOOO");
 				moveDirection = new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
 				moveDirection = transform.TransformDirection(moveDirection);
@@ -36,7 +36,7 @@ public class actions : MonoBehaviour {
 				}
 			}
 			moveDirection.y -=gravity * Time.deltaTime;
-			charControl.Move(moveDirection * Time.deltaTime);
+			charControl.Move(moveDirection * Time.deltaTime);*/
 			//charControl.Move(transform.TransformDirection(Vector3.forward));
 		}
 
