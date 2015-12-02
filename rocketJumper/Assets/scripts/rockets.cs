@@ -14,6 +14,7 @@ public class rockets : MonoBehaviour {
 	public Button vin;
 	public bool rocketTrue;
 	public bool vineTrue;
+	public bool vortexTrue;
 	GameObject[] blocks;
 
 
@@ -26,6 +27,7 @@ public class rockets : MonoBehaviour {
 		vin.GetComponent<Image> ().color = Color.white;
 		rocketTrue = true;
 		vineTrue = false;
+		vortexTrue = false; //added
 		blocks = GameObject.FindGameObjectsWithTag ("block");
 
     }
@@ -41,6 +43,7 @@ public class rockets : MonoBehaviour {
 			rock.GetComponent<Image>().color = Color.red;
 			rocketTrue = true;
 			vineTrue = false;
+			vortexTrue = false; //added
 			foreach (GameObject blo in blocks)
 			{
 				blo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -53,10 +56,24 @@ public class rockets : MonoBehaviour {
 			vin.GetComponent<Image>().color = Color.red;
 			rocketTrue = false;
 			vineTrue = true;
+			vortexTrue = false; //added
 			foreach (GameObject blo in blocks)
 			{
 				blo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 			}
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha3)) 
+		{
+			//rock.GetComponent<Image>().color = Color.white;
+			//vin.GetComponent<Image>().color = Color.red;
+			rocketTrue = false;
+			vineTrue = true;
+			vortexTrue = true; //added
+			/*
+			foreach (GameObject blo in blocks)
+			{
+				blo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+			}*/
 		}
 		if (Input.GetButtonDown("Fire1"))
 		{
@@ -67,7 +84,7 @@ public class rockets : MonoBehaviour {
     void FireProjectile()
     {
         Rigidbody clone;
-        clone = Instantiate(Projectile, Launcher.transform.position + SPAWN_DISTANCE * Launcher.transform.forward, transform.rotation) as Rigidbody;
+        clone = Instantiate(Projectile, Launcher.transform.position + SPAWN_DISTANCE * Launcher.transform.forward, Launcher.transform.rotation) as Rigidbody;
         clone.velocity = transform.TransformDirection(Vector3.forward * power);
         Explode explo = (Explode)clone.gameObject.AddComponent(typeof(Explode)); //clone.AddComponent<Explode>();
         //Destroy(clone);
@@ -76,5 +93,14 @@ public class rockets : MonoBehaviour {
 	void FireVine()
 	{
 		
+	}
+
+	void FireVortex()
+	{
+		Rigidbody cloneV;
+		cloneV = Instantiate(Projectile, Launcher.transform.position + SPAWN_DISTANCE * Launcher.transform.forward, Launcher.transform.rotation) as Rigidbody;
+		cloneV.velocity = transform.TransformDirection(Vector3.forward * power);
+		Explode explo = (Explode)clone.gameObject.AddComponent(typeof(Explode)); //clone.AddComponent<Explode>();
+		//Destroy(clone);
 	}
 }

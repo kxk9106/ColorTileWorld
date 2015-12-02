@@ -10,6 +10,9 @@ public class Explode : MonoBehaviour {
     public float upMod = 0; // for AddExplosionForce - upwardsModifier - leaving this at zero, so that the explosion force will be easier to control and utilize
     public ForceMode fMode = ForceMode.Impulse; // for AddExplosionForce - ForceMode - 4 options: Force, Acceleration, Impulse and VelocityChange, no idea which is best
 
+	public float forceV = -25; // for AddExplosionForce - explosionForce
+	public float radiusV = 25; // for AddExplosionForce - explosionRadius
+
     //Vector3 TossDirection;
     //public float speed = 10;
 
@@ -39,6 +42,21 @@ public class Explode : MonoBehaviour {
 				Destroy(gameObject); // destroys the projectile after impact
 
 			}
+		} 
+		if (rocketa.vortexTrue == true) 
+		{
+			pos = transform.position; //should be the projectile itself
+			Collider[] colliders = Physics.OverlapSphere(pos, radius);
+			foreach (Collider hit in colliders)
+			{
+				Rigidbody rb = hit.GetComponent<Rigidbody>();
+				if (rb != null)
+				{
+					rb.AddExplosionForce(force, pos, radius, upMod, fMode);
+				}//if
+			}//foreach
+			
+			Destroy(gameObject); // destroys the projectile after impact
 		} 
 		else 
 		{
