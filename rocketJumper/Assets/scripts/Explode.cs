@@ -12,6 +12,7 @@ public class Explode : MonoBehaviour {
 
 	public float forceV = 35; // for AddExplosionForce - explosionForce
 	public float radiusV = 50; // for AddExplosionForce - explosionRadius
+	public ForceMode fModeV = ForceMode.Impulse;
 
     //Vector3 TossDirection;
     //public float speed = 10;
@@ -52,7 +53,7 @@ public class Explode : MonoBehaviour {
 				Rigidbody rb = hit.GetComponent<Rigidbody>();
 				if (rb != null)
 				{
-					rb.AddExplosionForce(-forceV, pos, radiusV, upMod, fMode);
+					rb.AddExplosionForce(-forceV, pos, radiusV, upMod, fModeV);
 				}//if
 			}//foreach
 			
