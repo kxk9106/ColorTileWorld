@@ -101,12 +101,12 @@ public class rockets : MonoBehaviour {
 		
 	}
 
-	void FireVortex()
+	/*void FireVortex()
 	{
 		Rigidbody cloneV;
 		cloneV = Instantiate(Projectile, Launcher.transform.position + SPAWN_DISTANCE * Launcher.transform.forward, Launcher.transform.rotation) as Rigidbody;
 		cloneV.velocity = transform.TransformDirection(Vector3.forward * power);
 		Explode explo = (Explode)cloneV.gameObject.AddComponent(typeof(Explode)); //clone.AddComponent<Explode>();
 		//Destroy(clone);
-	}
+	}*/
 }
