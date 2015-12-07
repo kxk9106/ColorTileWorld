@@ -11,7 +11,7 @@ public class rockets : MonoBehaviour {
     private const float SPAWN_DISTANCE = .5f;
     public int power = 50;
 	public Button rock;
-	public Button vin;
+	public Button vortex;
 	public bool rocketTrue;
 	public bool vineTrue;
 	public bool vortexTrue;
@@ -26,7 +26,7 @@ public class rockets : MonoBehaviour {
     void Start()
     {
 		rock.GetComponent<Image> ().color = Color.red;
-		vin.GetComponent<Image> ().color = Color.white;
+		vortex.GetComponent<Image> ().color = Color.white;
 		rocketTrue = true;
 		vineTrue = false;
 		vortexTrue = false; //added
@@ -38,9 +38,9 @@ public class rockets : MonoBehaviour {
     {
 	    //if button chosen changes color to red
 	    //if not chosen changes color to white
-	    if (Input.GetKeyDown (KeyCode.Alpha1)) 
+	    if (Input.GetKeyDown (KeyCode.Q)) 
 	    {
-	    	vin.GetComponent<Image>().color = Color.white;
+			vortex.GetComponent<Image>().color = Color.white;
 	    	rock.GetComponent<Image>().color = Color.red;
 	    	rocketTrue = true;
 	    	vineTrue = false;
@@ -51,6 +51,7 @@ public class rockets : MonoBehaviour {
 	    	}
 
 	    }
+		/*
            if (Input.GetKeyDown (KeyCode.Alpha2)) 
 	    {
 	    	rock.GetComponent<Image>().color = Color.white;
@@ -63,12 +64,13 @@ public class rockets : MonoBehaviour {
 	    		blo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 	    	}
 	    }
-	    if (Input.GetKeyDown (KeyCode.Alpha3)) 
+	    */
+	    if (Input.GetKeyDown (KeyCode.E)) 
 	    {
-	    	//rock.GetComponent<Image>().color = Color.white;
-	    	//vin.GetComponent<Image>().color = Color.red;
+			rock.GetComponent<Image>().color = Color.white;
+			vortex.GetComponent<Image>().color = Color.red;
 	    	rocketTrue = false;
-	    	vineTrue = true;
+	    	vineTrue = false;
 	    	vortexTrue = true; //added
 	    	/*
 	    	foreach (GameObject blo in blocks)
