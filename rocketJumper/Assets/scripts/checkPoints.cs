@@ -26,7 +26,6 @@ public class checkPoints : MonoBehaviour {
 		if (this.transform.position.y <= -1.5f) {
 			this.transform.position = restartLoc;
 			Debug.Log("triggered");
-			here.PlayOneShot(flag,0.7F);
 		}
 
 		for(int i = 0; i< checkPointFlags.Length; i++){
