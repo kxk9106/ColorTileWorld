@@ -9,6 +9,8 @@ public class checkPoints : MonoBehaviour {
 	Vector3 restartLoc;
 	GameObject[] checkPointFlags;
 
+	//sound
+	//http://soundbible.com/2063-UFO-Landing.html
 	public AudioClip flag;
 	AudioSource here;
 
