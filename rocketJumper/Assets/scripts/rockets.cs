@@ -7,6 +7,7 @@ public class rockets : MonoBehaviour {
 
     // Variable Declaration
     public Rigidbody Projectile = null;
+	public Rigidbody Projectile2 = null;
     public Transform Launcher = null;
     private const float SPAWN_DISTANCE = .5f;
     public int power = 50;
@@ -91,7 +92,7 @@ public class rockets : MonoBehaviour {
 				{
 					blo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 				}
-				FireProjectile();
+				FireProjectile(0);
                 timeLast = Time.time;
             }//reload time
 	    }
@@ -104,17 +105,28 @@ public class rockets : MonoBehaviour {
 				rocketTrue = false;
 				vineTrue = false;
 				vortexTrue = true; //added
-				FireProjectile();
+				FireProjectile(1);
 				timeLast = Time.time;
 			}//reload time
 		}
 		
 	}
 	
-	void FireProjectile()
+	void FireProjectile(int type)
 	{
 		Rigidbody clone;
-        clone = Instantiate(Projectile, Launcher.transform.position + SPAWN_DISTANCE * Launcher.transform.forward, Launcher.transform.rotation) as Rigidbody;
+		if (type == 0) 
+		{
+			clone = Instantiate (Projectile, Launcher.transform.position + SPAWN_DISTANCE * Launcher.transform.forward, Launcher.transform.rotation) as Rigidbody;
+		} 
+		else if (type == 1) 
+		{
+			clone = Instantiate (Projectile2, Launcher.transform.position + SPAWN_DISTANCE * Launcher.transform.forward, Launcher.transform.rotation) as Rigidbody;
+		} 
+		else 
+		{
+			clone = Instantiate (Projectile, Launcher.transform.position + SPAWN_DISTANCE * Launcher.transform.forward, Launcher.transform.rotation) as Rigidbody;
+		}
         clone.velocity = transform.TransformDirection(Vector3.forward * power);
         Explode explo = (Explode)clone.gameObject.AddComponent(typeof(Explode)); //clone.AddComponent<Explode>();
         //Destroy(clone);
